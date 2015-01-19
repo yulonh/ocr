@@ -30,7 +30,7 @@ function getTextFromBase64(base64, callback) {
 
     var tesseract = spawn('tesseract', ['code.png', 'stdout', '-l eng', '-psm 7', 'digits']);
     tesseract.stdout.setEncoding('utf8');
-    var result;
+    var result = '';
     tesseract.stdout.on('data', function(data) {
         console.log(data);
         if (data) {
@@ -41,7 +41,7 @@ function getTextFromBase64(base64, callback) {
         if (data) {
             result += data;
         }
-        callback && callback(result || '');
+        callback && callback(result.trim() || '');
     });
 
     tesseract.on('error', function(e) {
