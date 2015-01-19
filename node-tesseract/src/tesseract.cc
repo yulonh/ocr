@@ -8,4 +8,5 @@ Handle<Value> Method(const Arguments& args) {
 void init(Handle<Object> target) {
     NODE_SET_METHOD(target, "sayHello", Method);
 }
+
 NODE_MODULE(hello, init);
