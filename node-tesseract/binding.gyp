@@ -1,9 +1,9 @@
 {
   'targets': [
     {
-      'target_name': 'hello',
+      'target_name': 'tesseract',
       'sources': [
-        'src/hello.cc'
+        'src/tesseract.cc'
       ],
       'dependencies': [
       ]
