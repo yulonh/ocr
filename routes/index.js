@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     var base64 = req.body['base64'];
     getTextFromBase64(base64, function(text) {
         res.json({
-            base64: text
+            text: text
         });
     });
 });
@@ -27,10 +27,11 @@ function getTextFromBase64(base64, callback) {
     var bitmap = new Buffer(base64, 'base64');
     fs.writeFileSync(imgPath, bitmap);
 
-    var tesseract = spawn(cmd, [imgPath, 'out', '-l eng', '-psm 7', 'digits']);
+    var tesseract = spawn(cmd, [imgPath, 'stdout', '-l eng', '-psm 7', 'digits']);
     tesseract.stdout.setEncoding('utf8');
     var result = '';
     tesseract.stdout.on('data', function(data) {
+        console.log(data);
         result += data;
     });
     tesseract.stdout.on('end', function(data) {
