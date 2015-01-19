@@ -1,0 +1,1 @@
+cmd_Release/obj.target/tesseract.node := flock ./Release/linker.lock g++ -shared -pthread -rdynamic -m64  -Wl,-soname=tesseract.node -o Release/obj.target/tesseract.node -Wl,--start-group Release/obj.target/tesseract/src/tesseract.o -Wl,--end-group 
